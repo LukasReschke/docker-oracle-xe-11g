@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-MAINTAINER Wei-Ming Wu <wnameless@gmail.com>
+MAINTAINER Thomas Müller <thomas.mueller@tmit.eu>
 
 ADD chkconfig /sbin/chkconfig
 ADD init.ora /
@@ -40,10 +40,17 @@ RUN echo 'export ORACLE_SID=XE' >> /etc/bash.bashrc
 # Remove installation files
 RUN rm /oracle-xe_11.2.0-1.0_amd64.deb*
 
+# Setup ownCloud user and db for unit testing
+ADD owncloud.sql /
+ENV ORACLE_HOME /u01/app/oracle/product/11.2.0/xe
+ENV PATH $ORACLE_HOME/bin:$PATH
+ENV ORACLE_SID XE
+
 EXPOSE 22
 EXPOSE 1521
 EXPOSE 8080
 
 CMD sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora; \
 	service oracle-xe start; \
+	sqlplus -s -l system/oracle @owncloud; \
 	/usr/sbin/sshd -D

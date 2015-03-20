@@ -1,18 +1,16 @@
 docker-oracle-xe-11g
 ============================
 
-Oracle Express Edition 11g Release 2 on Ubuntu 14.04.1 LTS
-
-This **Dockerfile** is a [trusted build](https://registry.hub.docker.com/u/wnameless/oracle-xe-11g/) of [Docker Registry](https://registry.hub.docker.com/).
+Oracle Express Edition 11g Release 2 on Ubuntu 14.04.1 LTS - including a database for ownCloud CI.
 
 ### Installation
 ```
-docker pull wnameless/oracle-xe-11g
+docker pull deepdiver/docker-oracle-xe-11g
 ```
 
 Run with 22 and 1521 ports opened:
 ```
-docker run -d -p 49160:22 -p 49161:1521 wnameless/oracle-xe-11g
+docker run -d -p 49160:22 -p 49161:1521 deepdiver/oracle-xe-11g
 ```
 
 Connect database with following setting:
@@ -33,4 +31,10 @@ Login by SSH
 ```
 ssh root@localhost -p 49160
 password: admin
+```
+
+Connect to ownCloud CI database
+```
+username: autotest
+password: owncloud
 ```
