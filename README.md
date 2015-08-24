@@ -10,7 +10,7 @@ docker pull deepdiver/docker-oracle-xe-11g
 
 Run with 22 and 1521 ports opened:
 ```
-docker run -d -p 49160:22 -p 49161:1521 deepdiver/oracle-xe-11g
+docker run -d -p 49160:22 -p 49161:1521 deepdiver/docker-oracle-xe-11g
 ```
 
 Connect database with following setting:
