@@ -9,3 +9,6 @@ alter system set sessions=250 scope=spfile;
 alter system set processes=250 scope=spfile;
 alter system set session_cached_cursors=250 scope=spfile;
 alter system set session_max_open_files=250 scope=spfile;
+
+quit;
+/
