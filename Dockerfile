@@ -57,6 +57,6 @@ EXPOSE 8080
 CMD sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora; \
 	service oracle-xe start; \
 	sqlplus -s -l system/oracle @owncloud; \
-	sqlplus -s -l system/oracle @tuning; \
+#	sqlplus -s -l system/oracle @tuning; \
 	service oracle-xe restart; \
 	/usr/sbin/sshd -D
