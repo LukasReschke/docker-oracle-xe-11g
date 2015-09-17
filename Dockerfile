@@ -46,6 +46,12 @@ ENV ORACLE_HOME /u01/app/oracle/product/11.2.0/xe
 ENV PATH $ORACLE_HOME/bin:$PATH
 ENV ORACLE_SID XE
 
+# Try to perform some performance tunings
+ADD tuning.sql /
+RUN service oracle-xe start
+echo exit | sqlplus system/oracle @tuning
+RUN service oracle-xe stop
+
 EXPOSE 22
 EXPOSE 1521
 EXPOSE 8080
