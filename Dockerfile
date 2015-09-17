@@ -49,8 +49,6 @@ ENV ORACLE_SID XE
 # Try to perform some performance tunings
 ADD tuning.sql /
 RUN service oracle-xe start
-RUN echo exit | sqlplus system/oracle @tuning
-RUN service oracle-xe stop
 
 EXPOSE 22
 EXPOSE 1521
@@ -59,4 +57,7 @@ EXPOSE 8080
 CMD sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" /u01/app/oracle/product/11.2.0/xe/network/admin/listener.ora; \
 	service oracle-xe start; \
 	sqlplus -s -l system/oracle @owncloud; \
+	sqlplus -s -l system/oracle @tuning; \
+	service oracle-xe stop; \
+	service oracle-xe start; \
 	/usr/sbin/sshd -D
