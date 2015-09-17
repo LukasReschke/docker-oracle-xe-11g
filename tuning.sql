@@ -8,7 +8,7 @@ alter system set sessions=250 scope=spfile;
 alter system set processes=250 scope=spfile;
 alter system set session_cached_cursors=250 scope=spfile;
 alter system set session_max_open_files=250 scope=spfile;
-alter system set shared_pool_reserved_size='20156M' scope=spfile;
+alter system set shared_pool_reserved_size='2056M' scope=spfile;
 alter system set memory_max_target='2056M' scope=spfile;
 alter system set sga_target = 0;
 alter system set pga_aggregate_target = 0;
