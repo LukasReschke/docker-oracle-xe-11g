@@ -58,6 +58,5 @@ CMD sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" /u01/app/oracle/product/11.2.0
 	service oracle-xe start; \
 	sqlplus -s -l system/oracle @owncloud; \
 	sqlplus -s -l system/oracle @tuning; \
-	service oracle-xe stop; \
-	service oracle-xe start; \
+	service oracle-xe restart; \
 	/usr/sbin/sshd -D
