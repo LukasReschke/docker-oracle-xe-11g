@@ -49,7 +49,7 @@ ENV ORACLE_SID XE
 # Try to perform some performance tunings
 ADD tuning.sql /
 RUN service oracle-xe start
-echo exit | sqlplus system/oracle @tuning
+RUN echo exit | sqlplus system/oracle @tuning
 RUN service oracle-xe stop
 
 EXPOSE 22
