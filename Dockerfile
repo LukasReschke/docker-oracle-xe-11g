@@ -60,5 +60,4 @@ CMD sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" /u01/app/oracle/product/11.2.0
 	sqlplus -s -l system/oracle @tuning; \
 	service oracle-xe stop; \
 	service oracle-xe start; \
-	echo "OCI started\n"; \
 	/usr/sbin/sshd -D
