@@ -48,7 +48,6 @@ ENV ORACLE_SID XE
 
 # Try to perform some performance tunings
 ADD tuning.sql /
-RUN service oracle-xe start
 
 EXPOSE 22
 EXPOSE 1521
